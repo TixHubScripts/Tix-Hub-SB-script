@@ -1,0 +1,183 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Tix Hub", "Ocean")
+
+local Main = Window:NewTab("Main")
+
+local MainSection = Main:NewSection("Main")
+
+MainSection:NewButton("Create Safe spot", "Creats safe spot", function()
+if not workspace:FindFirstChild("Spot") then
+local SafeSpot = Instance.new("Part", workspace)
+
+SafeSpot.Position = Vector3.new(-1500,100,-1500)
+
+SafeSpot.Name = "Spot"
+
+SafeSpot.Size = Vector3.new(50,50,50)
+
+SafeSpot.Anchored = true
+
+SafeSpot.Transparency = .7
+
+else
+
+
+    end
+end)
+
+MainSection:NewButton("Slap Aura", "auto slaps people from a bigger range", function()
+
+local Namecall
+Namecall = hookmetamethod(game, '__namecall', function(self, ...)
+   if getnamecallmethod() == 'FireServer' and tostring(self) == 'Ban' then
+       return
+   elseif getnamecallmethod() == 'FireServer' and tostring(self) == 'WalkSpeedChanged' then
+       return
+   elseif getnamecallmethod() == 'FireServer' and tostring(self) == 'AdminGUI' then
+       return
+   end
+   return Namecall(self, ...)
+end)
+ 
+-- Main
+local LocalPlayer = game.Players.LocalPlayer
+local ReplicatedStorage = game:GetService('ReplicatedStorage')
+ 
+game.RunService.RenderStepped:Connect(function()
+   for Index, Player in next, game.Players:GetPlayers() do
+       if Player ~= LocalPlayer then
+           local Character = Player.Character
+ 
+           if Character:FindFirstChild('HumanoidRootPart') ~= nil and Character:FindFirstChild('Humanoid') ~= nil and Character.Humanoid.Health > 0 then
+               local Magnitude = (Character.HumanoidRootPart.Position - LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+               if Magnitude < 35 then
+                   ReplicatedStorage.b:FireServer(Character.Head)
+               end
+           end
+       end
+   end
+end)
+
+end)
+
+MainSection:NewButton("Destroy cube of death", "destroys the cube of death", function()
+ workspace.Arena.CubeOfDeathArea["the cube of death(i heard it kills)"]:Destroy()
+        
+    end)
+
+
+
+local TeleportsSection = Main:NewSection("Teleports")
+
+TeleportsSection:NewButton("slapple island", "tps u to slapple island", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-400.620453, 50.7640572, -13.6834946, -0.0661776289, 5.88711373e-08, -0.99780786, -4.70497774e-08, 1, 6.21209537e-08, 0.99780786, 5.10576541e-08, -0.0661776289)
+end)
+
+TeleportsSection:NewButton("Moai island", "tps u to moai island", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(213.354462, -15.7160769, -10.684, -0.0925091505, -1.3390532e-09, 0.995711863, 6.34896788e-11, 1, 1.35071865e-09, -0.995711863, 1.88171256e-10, -0.0925091505)
+end)
+
+TeleportsSection:NewButton("Brazil", "Tps you to brazil portal gives u badge! (And kicks u out)", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-469.613953, 304.469482, -11.8963394, 0, -1, 0, 1, 0, -0, 0, 0, 1)
+
+end)
+
+MainSection:NewButton("destroy name tag", "destroys name tag", function()
+game.Players.LocalPlayer.Character.Head["Nametag"]:Destroy()
+        
+    end)
+
+
+TeleportsSection:NewButton("Safe Spot", "tps u to safe spot", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1505.17432, 127.999969, -1500.33142, -0.0048089074, -2.4854641e-08, -0.999988437, 3.95040338e-08, 1, -2.50449013e-08, 0.999988437, -3.96240161e-08, -0.0048089074)
+end)
+
+local Autofarm = Window:NewTab("Autofarm")
+
+local AutofarmSection = Autofarm:NewSection("Autofarm")
+
+AutofarmSection:NewButton("Elude", "Gets u elude", function()
+local teleportFunc = queueonteleport or queue_on_teleport or syn and syn.queue_on_teleport
+
+if teleportFunc then
+    teleportFunc([[
+        if not game:IsLoaded() then
+            game.Loaded:Wait()
+        end
+        
+        local localPlr = game:GetService("Players").LocalPlayer
+        repeat wait() until localPlr
+        
+        game:GetService("RunService").RenderStepped:Connect(function()
+            localPlr.Character.HumanoidRootPart.CFrame = CFrame.new(-502.336, 14.228, -179.597)
+        end)
+    ]])
+end
+
+game:GetService("TeleportService"):Teleport(11828384869)
+end)
+
+AutofarmSection:NewButton("[REDACTED]", "Gets you [REDACTED] instantly  (You need 5k slaps!)", function()
+local Door = 1
+
+if not game:GetService("BadgeService"):UserHasBadgeAsync(game.Players.LocalPlayer.UserId, 2124847850) and 5000 <= game.Players.LocalPlayer.leaderstats.Slaps.Value then
+
+    repeat
+    
+    task.wait(.25)
+
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.PocketDimension.Doors[Door].CFrame
+
+    Door = Door + 1
+
+    print(Door)
+
+    wait(5)
+
+
+
+    
+    until game:GetService("BadgeService"):UserHasBadgeAsync(game.Players.LocalPlayer.UserId, 2124847850)
+
+else 
+
+    print("YOU ALREADY HAVE [REDACTED] !!")
+
+    print("OR YOU DONT HAVE 5K SLAPS")
+
+end
+end)
+
+AutofarmSection:NewButton("Anti AFK", "Anti AFK (used for megarok,fish,voodoo)", function()
+wait(0.5)local ba=Instance.new("ScreenGui")
+local ca=Instance.new("TextLabel")local da=Instance.new("Frame")
+local _b=Instance.new("TextLabel")local ab=Instance.new("TextLabel")ba.Parent=game.CoreGui
+ba.ZIndexBehavior=Enum.ZIndexBehavior.Sibling;ca.Parent=ba;ca.Active=true
+ca.BackgroundColor3=Color3.new(0.176471,0.176471,0.176471)ca.Draggable=true
+ca.Position=UDim2.new(0.698610067,0,0.098096624,0)ca.Size=UDim2.new(0,304,0,52)
+ca.Font=Enum.Font.SourceSansSemibold;ca.Text="Anti Afk Script"ca.TextColor3=Color3.new(0,1,1)
+ca.TextSize=22;da.Parent=ca
+da.BackgroundColor3=Color3.new(0.196078,0.196078,0.196078)da.Position=UDim2.new(0,0,1.0192306,0)
+da.Size=UDim2.new(0,304,0,107)_b.Parent=da
+_b.BackgroundColor3=Color3.new(0.176471,0.176471,0.176471)_b.Position=UDim2.new(0,0,0.800455689,0)
+_b.Size=UDim2.new(0,304,0,21)_b.Font=Enum.Font.Arial;_b.Text="Made by Tix Hub"
+_b.TextColor3=Color3.new(1,1,1)_b.TextSize=20;ab.Parent=da
+ab.BackgroundColor3=Color3.new(0.176471,0.176471,0.176471)ab.Position=UDim2.new(0,0,0.158377379,0)
+ab.Size=UDim2.new(0,304,0,44)ab.Font=Enum.Font.ArialBold;ab.Text="Tix Hub"
+ab.TextColor3=Color3.new(1,1,1)ab.TextSize=20;local bb=game:service'VirtualUser'
+game:service'Players'.LocalPlayer.Idled:connect(function()
+bb:CaptureController()bb:ClickButton2(Vector2.new())
+ab.Text="Thanks to our script u cant get kicked by being idle 20 mins"wait(2)ab.Text="Script Re-Enabled"end)
+end)
+
+local localplayer = Window:NewTab("localplayer")
+
+local localplayerSection = localplayer:NewSection("localplayer")
+
+localplayerSection:NewSlider("WalkSpeed", "makes u go faster", 50, 16, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+localplayerSection:NewSlider("JumpPower", "makes u jump higher", 100, 50, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
