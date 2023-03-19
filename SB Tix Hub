@@ -163,3 +163,12 @@ FarmSection:NewButton("get elude", "gets elude", function()
   
   game:GetService("TeleportService"):Teleport(11828384869)
 end)
+
+local Safe = Window:NewTab("Safe")
+local SafeSection = Safe:NewSection("Safe")
+
+SafeSection:NewButton("Anti Admins", "Kicks u when admins join", function()
+  if Plr:GetRankInGroup(9950771) and 7 <= Plr:GetRankInGroup(9950771) and antiAdmins then
+    game.Players.LocalPlayer:Kick("RUNNNN ADMINS ARE COMINGGGG")
+  end
+end)
