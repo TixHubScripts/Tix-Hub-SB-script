@@ -145,11 +145,88 @@ end)
 
 
 
-local Safe = Window:NewTab("Safe")
-local SafeSection = Safe:NewSection("Safe")
+local Anti = Window:NewTab("Anti")
+local AntiSection = Anti:NewSection("COMING SOON!!!")
 
-SafeSection:NewButton("Anti Admins", "Kicks u when admins join", function()
-  if Plr:GetRankInGroup(9950771) and 7 <= Plr:GetRankInGroup(9950771) and antiAdmins then
-    game.Players.LocalPlayer:Kick("RUNNNN ADMINS ARE COMINGGGG")
+local Troll = Window:NewTab("Troll")
+local TrollSection = Troll:NewSection("Troll")
+
+TrollSection:NewToggle("error sound spam", "spams error death sound", function(bool) -- callback
+
+  nameHere = bool
+
+  if bool == true then
+
+    while nameHere do
+      task.wait(1)
+      game.ReplicatedStorage.ErrorDeath:FireServer()
+    end
+
   end
+
 end)
+
+
+FarmSection:NewToggle("Slapple Farm", "Collects Slapples", function(bool) -- callback
+
+  nameHere = bool
+
+  if bool == true then
+
+    while nameHere do
+      wait(.001)
+
+      for Index, Instance in next, workspace.Arena.island5.Slapples:GetDescendants() do
+
+          if Instance.ClassName == "TouchTransmitter" then
+
+              firetouchinterest(game.Players.LocalPlayer.Character.Head, Instance.Parent, 0)
+              firetouchinterest(game.Players.LocalPlayer.Character.Head, Instance.Parent, 1)
+
+          end
+
+      end
+
+  end
+
+end
+
+
+end)
+local Useful = Window:NewTab("Useful")
+local UsefulSection = Useful:NewSection("Useful")
+
+UsefulSection:NewToggle("Auto enter arena", "Auto enters arena", function(bool) -- callback
+
+  nameHere = bool
+
+  if bool == true then
+
+    while nameHere do
+      task.wait()
+      wait()
+                        
+      repeat task.wait() until game.Players.LocalPlayer.Character
+  
+      if not game.Players.LocalPlayer.Character:FindFirstChild("entered") and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+          
+          repeat task.wait(.005)
+              
+          firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), workspace.Lobby.Teleport1.TouchInterest.Parent, 0)
+          
+          firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), workspace.Lobby.Teleport1.TouchInterest.Parent, 1)
+
+          until game.Players.LocalPlayer.Character:FindFirstChild("entered")
+          
+      end
+
+end
+
+end
+
+
+
+end)
+
+local Credits = Window:NewTab("Credits")
+local CreditsSection = Credits:NewSection("Tix#1245")
