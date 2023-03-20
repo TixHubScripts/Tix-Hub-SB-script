@@ -146,7 +146,7 @@ end)
 
 
 local Anti = Window:NewTab("Anti")
-local AntiSection = Anti:NewSection("COMING SOON!!!")
+local AntiSection = Anti:NewSection("Anti")
 
 local Troll = Window:NewTab("Troll")
 local TrollSection = Troll:NewSection("Troll")
@@ -230,3 +230,61 @@ end)
 
 local Credits = Window:NewTab("Credits")
 local CreditsSection = Credits:NewSection("Tix#1245")
+
+AntiSection:NewToggle("Anti reaper ", "Blocks reaper death mark", function(bool) -- callback
+
+  nameHere = bool
+
+  if bool == true then
+
+    while nameHere do
+      task.wait(1)
+      wait(.001)
+            
+      for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+
+          if v.Name == "DeathMark" then
+
+          game:GetService("ReplicatedStorage").ReaperGone:FireServer(game:GetService("Players").LocalPlayer.Character.DeathMark)
+
+          game:GetService("Lighting"):WaitForChild("DeathMarkColorCorrection"):Destroy() 
+
+          end 
+
+      end
+  
+  end
+  
+end
+
+
+
+
+end)
+
+AntiSection:NewToggle("Anti squid", "Anti squid glove", function(bool) -- callback
+
+  nameHere = bool
+
+  if bool == true then
+
+    while nameHere do
+      task.wait(1)
+      task.wait()
+            
+      for i,v in pairs(game.Players.LocalPlayer.PlayerGui.SquidInk:GetChildren()) do
+          
+          if v.Parent then
+              
+              v:Destroy()
+              
+          end
+          
+      end
+      
+      end
+  
+  end
+  
+
+end)
